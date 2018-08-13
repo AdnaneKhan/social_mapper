@@ -27,7 +27,7 @@ class Twitterfinder(object):
 		self.driver.execute_script('localStorage.clear();')
 		
 		if(str(self.driver.title).encode('ascii','replace').startswith("Login on")):
-			print "\n[+] Twitter Login Page loaded successfully [+]"
+			print("\n[+] Twitter Login Page loaded successfully [+]")
 			twitterUsername = self.driver.find_element_by_class_name("js-username-field")
 			twitterUsername.send_keys(username)
 			twitterPassword = self.driver.find_element_by_class_name("js-password-field")
@@ -35,9 +35,9 @@ class Twitterfinder(object):
 			twitterPassword.send_keys(Keys.ENTER)
 			sleep(5)
 			if(str(self.driver.title) == "Twitter"):
-				print "[+] Twitter Login Success [+]\n"
+				print("[+] Twitter Login Success [+]\n")
 			else:
-				print "[-] Twitter Login Failed [-]\n"
+				print("[-] Twitter Login Failed [-]\n")
 
 	def getTwitterProfiles(self,first_name,last_name):
 		url = "https://twitter.com/search?f=users&vertical=default&q=" + first_name + "%20" + last_name + "&src=typd"
@@ -54,7 +54,7 @@ class Twitterfinder(object):
 				profilepic = replaced1.replace("_bigger.jpeg","_400x400.jpg")
 				picturelist.append(["https://twitter.com" + link,profilepic,1.0])
 			except:
-				print "Error"
+				print("Error")
 				continue
 		return picturelist
 
